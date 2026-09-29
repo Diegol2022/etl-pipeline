@@ -1,4 +1,4 @@
-# Pipeline ETL de datos del Titanic
+# Pipeline ETL de datos
 
 Este proyecto implementa un pipeline ETL sencillo en Python para procesar el dataset de datos. En este caso de ejemplo son los pasajeros del Titanic. Lee los datos desde un archivo CSV, elimina registros duplicados y guarda el resultado en formato Parquet.
 
