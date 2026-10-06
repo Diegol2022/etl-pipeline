@@ -1,0 +1,49 @@
+# --- Entornos virtuales ---
+venv/
+.venv/
+env/
+ENV/
+
+# --- Python: bytecode y caché ---
+__pycache__/
+*.py[cod]
+*$py.class
+
+# --- Builds y empaquetado ---
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# --- Tests y cobertura ---
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+
+# --- Jupyter ---
+.ipynb_checkpoints/
+
+# --- Variables de entorno / credenciales ---
+.env
+.env.*
+!.env.example
+
+# --- Logs ---
+*.log
+logs/
+
+# --- Datos generados por el pipeline ---
+# Descomentá la línea de abajo si NO querés versionar la salida del ETL
+# data/processed/
+
+# --- Editores / IDEs ---
+.vscode/
+.idea/
+*.swp
+
+# --- Sistema operativo ---
+.DS_Store
+Thumbs.db
+desktop.ini
