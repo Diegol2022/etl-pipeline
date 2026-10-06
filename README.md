@@ -50,7 +50,36 @@ La contrapartida es que Parquet es un formato binario: no se puede abrir ni edit
 - Python instalado.
 - Dependencias declaradas en `requirements.txt`: `pandas` y `pyarrow`.
 
-Instala las dependencias desde la carpeta raíz del proyecto:
+Se recomienda trabajar dentro de un entorno virtual (`venv`), para que las dependencias del proyecto no se mezclen con las del Python global.
+
+### 1. Crear el entorno virtual (solo la primera vez)
+
+Desde la carpeta raíz del proyecto:
+
+```bash
+python -m venv venv
+```
+
+### 2. Activar el entorno virtual
+
+Hay que activarlo **cada vez** que se abre una terminal nueva:
+
+| Sistema | Comando |
+|---|---|
+| Windows (CMD o PowerShell) | `venv\Scripts\activate` |
+| Linux / macOS | `source venv/bin/activate` |
+
+Cuando está activo, la línea de la terminal empieza con `(venv)`.
+
+En PowerShell, si aparece un error de permisos al activar, ejecutar una sola vez:
+
+```powershell
+Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
+```
+
+### 3. Instalar las dependencias
+
+Con el entorno virtual activo:
 
 ```bash
 python -m pip install -r requirements.txt
@@ -58,13 +87,23 @@ python -m pip install -r requirements.txt
 
 ## Ejecución
 
-Desde la carpeta raíz del proyecto, ejecuta:
+Con el entorno virtual activo, desde la carpeta raíz del proyecto, ejecuta:
 
 ```bash
 python main.py
 ```
 
 El programa muestra mensajes de progreso y confirma la ruta del archivo generado. Las rutas de entrada y salida están definidas al principio de `main.py` y son relativas a la carpeta desde la que se ejecuta el comando. La carpeta `data/processed` debe existir antes de iniciar el pipeline.
+
+## Solución de problemas
+
+**`ImportError: Unable to find a usable engine; tried using: 'pyarrow', 'fastparquet'`**
+
+El Python que está ejecutando el programa no tiene instalado `pyarrow`. Suele pasar cuando se corre `python main.py` sin tener activo el entorno virtual, y entonces se usa el Python global. Para resolverlo:
+
+1. Activar el entorno virtual (ver paso 2 de *Requisitos*) y volver a ejecutar.
+2. Si el error persiste con el `venv` activo, reinstalar las dependencias: `python -m pip install -r requirements.txt`.
+3. En VS Code, verificar que el intérprete seleccionado sea el del entorno virtual (`venv\Scripts\python.exe` en Windows): `Ctrl+Shift+P` → *Python: Select Interpreter*.
 
 ## Estructura
 
